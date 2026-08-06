@@ -5,12 +5,13 @@ function Book(name,author,pages,id) {
     this.pages = pages,
     this.id = crypto.randomUUID()
 };
+const library_books_array = [];
 
 function addBookToLibrary(name,author,pages) {
     const book = new Book(name,author,pages);
     library_books_array.push(book);
+    return book;
 }
-const library_books_array = [];
 
 const dialog = document.querySelector("dialog.new-book-dialog");
 const closebutton = document.querySelector(".new-book-dialog-close-button");
@@ -41,22 +42,74 @@ submitbutton.addEventListener("click",() => {
     console.log(`${title} , ${author} ,${page} ,${check}`)
     dialog.close();
     // console.log(bookinfo)
-    addBookToLibrary(bookname.value,authorname.value,pages.value);
+
+    
+    const book = addBookToLibrary(title, author, page);
+
+    
     
     const bookinfo = document.querySelector(".book-info");
     const para = document.createElement("p"); 
+    const status = document.createElement("p")
     const bnt = document.createElement("button");
-    para.innerHTML = `Title: ${title} <br> Author: ${author} <br> Pages: ${page}`
-    bnt.className = "remove-button"
-    bnt.innerText = "Remove Book"
-    bookinfo.appendChild(para);
-    bookinfo.appendChild(bnt);
+    const checkButton = document.createElement("button");
+    para.innerHTML = `Title: ${title} <br> Author: ${author} <br> Pages: ${page} <br>`
     
-    const removebutton = document.querySelector(".remove-button");
-    removebutton.addEventListener("click",() => {
+    bnt.innerText = "Remove Book"
+    checkButton.innerText = "Change Status"
+    para.setAttribute("data-book-id",book.id)
+    bookinfo.appendChild(para);
+    function BookStatus() {
+        if(check == true){
+          status.innerHTML = `Book Status: Read <br>`
+        }else {
+            status.innerHTML = `Book Status: Not Read <br>`
+        }
+        para.appendChild(status)  
+    }
+    BookStatus();
+    para.appendChild(bnt);
+    para.appendChild(checkButton);
+    checkButton.addEventListener("click", () => {
+        if(check == true){
+            status.innerHTML = `Book Status: Not Read <br>`
+            check = false;
+        }else {
+            status.innerHTML = `Book Status: Read <br>`
+            check = true;
+        }
+    })
+    
+    bnt.addEventListener("click",(e) => {
+        e.preventDefault();
+        removeBook(book.id);
         
     })
 })
 
-// testing
+
+function removeBook(bookId) {
+    const bookinfo = document.querySelector(".book-info");
+    const inventoryRemoveButton = document.querySelector(`[data-book-id="${bookId}"]`);
+    bookinfo.removeChild(inventoryRemoveButton);
+    
+    let bookIndex = -1;
+    
+    for (let i = 0; i < library_books_array.length; i++) {
+        if (library_books_array[i].id === bookId) {
+            bookIndex = i;
+            break;
+        }
+    }
+    
+    if (bookIndex !== -1) {
+        library_books_array.splice(bookIndex, 1);
+    }
+    
+    
+}
+
+
+
+
 
