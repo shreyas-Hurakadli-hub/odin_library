@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Odin Librarey</h1>
+    <div class="book-info">
+        
+    </div>
+    <dialog class="new-book-dialog">
+        <div class="forms">
+            <form class="new-book-form">
+                <div class="new-book-form-name">
+                    <label for="book-name">Book Title</label>
+                    <input type="text" id="book-name" name="name-of-title"  placeholder="Book Title" >
+                </div>
+                <div class="new-book-form-author-name">
+                    <label for="author-name">Author Name</label>
+                    <input type="text" id="author-name" name="name-of-author" placeholder="Author Of the Book" >
+                </div>
+                <div class="new-book-form-pages">
+                    <label for="book-pages">Number Of Pages</label>
+                    <input type="text" id="book-pages" name="number-of-pages" placeholder="Number of Pages" >
+                </div>
+                <div class="new-book-form-checkbox">
+                    <label for="book-status">Read</label>
+                    <input type="checkbox" id="book-status" name="status-of-book" value="checkbox">
+                </div>
+            </form>
+        </div>
+        <button class="new-book-dialog-close-button" type="button">Close</button>
+        <button class="new-book-dialog-submit-button" type="submit">Submit</button>
+    </dialog>
+    <button class="new-book-dialog-add-button" type="button" >Add New Book</button>
+    <script src="script.js"></script>
+</body>
+</html>
