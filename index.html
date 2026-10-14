@@ -13,27 +13,30 @@
     </div>
     <dialog class="new-book-dialog">
         <div class="forms">
-            <form class="new-book-form">
+            <form class="new-book-form" novalidate>
                 <div class="new-book-form-name">
                     <label for="book-name">Book Title</label>
-                    <input type="text" id="book-name" name="name-of-title"  placeholder="Book Title" >
+                    <input type="text" id="book-name" name="name-of-title"  placeholder="Book Title" required>
                 </div>
+                <span class="book-name-error"></span>
                 <div class="new-book-form-author-name">
                     <label for="author-name">Author Name</label>
-                    <input type="text" id="author-name" name="name-of-author" placeholder="Author Of the Book" >
+                    <input type="text" id="author-name" name="name-of-author" placeholder="Author Of the Book" required>
                 </div>
+                <span class="author-name-error"></span>
                 <div class="new-book-form-pages">
                     <label for="book-pages">Number Of Pages</label>
-                    <input type="text" id="book-pages" name="number-of-pages" placeholder="Number of Pages" >
+                    <input type="text" id="book-pages" name="number-of-pages" placeholder="Number of Pages" required>
                 </div>
+                <span class="book-pages-error"></span>
                 <div class="new-book-form-checkbox">
                     <label for="book-status">Read</label>
                     <input type="checkbox" id="book-status" name="status-of-book" value="checkbox">
                 </div>
+                <button class="new-book-dialog-submit-button" type="submit">Submit</button>
             </form>
         </div>
         <button class="new-book-dialog-close-button" type="button">Close</button>
-        <button class="new-book-dialog-submit-button" type="submit">Submit</button>
     </dialog>
     <button class="new-book-dialog-add-button" type="button" >Add New Book</button>
     <script src="script.js"></script>
