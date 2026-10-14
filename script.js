@@ -187,4 +187,3 @@ function removeBook(bookId) {
     
 }
 
-//form validity
